@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block body1 %}
+<div id="header1">
+        <div class="container">
+            <div class="row centered">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h1 style="font-size: 60px"><br>Книги<br></h1>
+                {% for Book in object_list %}
+                    <div class="infinite-container">
+                    <div class="infinite-item">
+                    <tr>
+                        <td> <a href="{% url 'book_id_url' Book.id_book%}">{{Book.name_book}} </a></td>
+                        {% if Book.photo %}
+                        <td><img src="{{Book.photo.url}}" width="350" height="300"></td>
+                        {% endif %}
+                    </tr>
+                    </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+{#        {% if is_paginated %}#}
+{#                <div class="pagination" style="font-size: 50px">#}
+{#                    <span class="page-links">#}
+{#                        {% if page_obj.has_previous %}#}
+{#                            <a class="aquo" href="/list_books?page={{ page_obj.previous_page_number }}" style="color: yellow">&laquo;</a>#}
+{#                        {% else %}#}
+{#                            <span class="unavailable" href="" style="color: white">&laquo;</span>#}
+{#                        {% endif %}#}
+{#                        {% for page in page_obj.paginator.page_range %}#}
+{#                            {% if page %}#}
+{#                                {% ifequal page page_obj.number %}#}
+{#                                    <span class="current-page" href="" style="color: white">{{ page }}</span>#}
+{#                                {% else %}#}
+{#                                    <a href="/list_books?page={{ page }}" class="page" style="color: yellow">{{ page }}</a>#}
+{#                                {% endifequal %}#}
+{#                            {% endif %}#}
+{#                        {% endfor %}#}
+{#                        {% if page_obj.has_next %}#}
+{#                            <a class="aquo" href="/list_books?page={{ page_obj.next_page_number }}" style="color: yellow">&raquo;</a>#}
+{#                        {% else %}#}
+{#                            <span class="unavailable" href="" style="color: white">&raquo;</span>#}
+{#                        {% endif %}#}
+{#                        <span hidden id="per-page">{{ page_obj.paginator.per_page }}</span>#}
+{#                    </span>#}
+{#                </div>#}
+{#            {% endif %}#}
+        </div>
+</div>
+{% endblock %}

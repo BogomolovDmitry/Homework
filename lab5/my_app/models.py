@@ -1,17 +1,27 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser
 
 
 class Book(models.Model):
         id_book = models.AutoField(primary_key=True)
-        name_book = models.CharField(max_length=100)
-        genre_book = models.CharField(max_length=50, default='Жанр неизвестен')
-        photo = models.ImageField(null=True, blank=True)
-        writer_book = models.CharField(max_length=100)
-        year_book = models.DateField()
-        number_book = models.IntegerField()
+        name_book = models.CharField(max_length=100, verbose_name='Название книги')
+        genre_book = models.CharField(max_length=50, default='Жанр неизвестен', verbose_name='Жанр')
+        photo = models.ImageField(null=True, blank=True, default='no-image.png', verbose_name='Фото')
+        writer_book = models.CharField(max_length=100, verbose_name='Автор')
+        year_book = models.IntegerField(verbose_name='Год создания')
+        users = models.ManyToManyField(User, through='Issuance', through_fields=('book_name', 'username'))
+
+        def str(self):
+            return '%s, %s' % (str(self.id_book), str(self.name_book))
+
+        def get_users(self):
+            return [{'name': user.username} for user in self.users.all()]
 
 
 class Issuance(models.Model):
-        id_book = models.ForeignKey(Book, on_delete=models.CASCADE)
-        id_user = models.ForeignKey(User, on_delete=models.CASCADE)
+    book_name = models.ForeignKey(Book, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def str(self):
+        return 'username:%s,  book_name:%s' % (str(self.username.username), str(self.book_name.name_book))

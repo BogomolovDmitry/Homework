@@ -1,6 +1,6 @@
 from django.shortcuts import render, HttpResponseRedirect
+from django.urls import reverse
 from django.views.generic import View,ListView
-from datetime import datetime
 from .form import *
 from .models import *
 from .registration import *
@@ -22,18 +22,26 @@ def db(request):
     return render(request, 'db.html', locals())
 
 
-class ReaderView(ListView):
+def book_id(request, id):
+    book = Book.objects.filter(id_book=id)
+    book = book.first()
+    id = request.GET.get('id')
+    if id:
+        queryset = Book.objects.filter(id=id)
+    return render(request, 'book_id.html', locals())
 
+
+class ReaderView(ListView):
     model = User
     template_name = 'reader.html'
 
 
-@login_required()
 def books(request):
-    form = BookForm(request.POST or None)
+    form = BookForm(request.POST, request.FILES or None)
     if request.POST and form.is_valid():
-        data = form.cleaned_data
-        new_form = form.save()
+        instance = form.save(commit=False)
+        instance.save()
+        return HttpResponseRedirect(reverse('book_id_url',args=(instance.pk,)))
     return render(request, 'books.html', locals())
 
 
@@ -113,3 +121,9 @@ def registration2(request):
                                             last_name=request.POST.get('surname'))
             return HttpResponseRedirect('/login/')
     return render(request, 'registration2.html', {'form': form})
+
+
+class ListBookView(ListView):
+    model = Book
+    template_name = 'list_books.html'
+    paginate_by = 2
