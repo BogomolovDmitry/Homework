@@ -9,21 +9,17 @@
 
 <br><br><br>
 <div class="container-fluid">
-<div class="row">
-{% load static %}
-<div class="col-xs-12">
-
- <div id="cbp-fwslider" class="cbp-fwslider">
- <ul>
- <li><a href="{% url 'books_url' %}"><img src="{% static "images/addbook.jpg" %}"  style="  border-radius: 10%" alt="image 1"/></a></li>
- <li><a href="{% url 'reader_url' %}"><img src="{% static "images/readers.jpg" %}"  style="  border-radius: 10%" alt="image 2"/></a></li>
-{# <li><a href= '/admin/'><img src="{% static "images/admin.jpg" %}"  style="width: 300px; height: 300px; border-radius: 10%" alt="image 3"/></a></li>#}
- </ul>
- </div>
-
-</div>
-
-</div>
+    <div class="row">
+    {% load static %}
+        <div class="col-xs-12">
+            <div id="cbp-fwslider" class="cbp-fwslider">
+               <ul>
+                   <li><a href="{% url 'books_url' %}"><img src="{% static "images/addbook.jpg" %}"  style="  border-radius: 10%" alt="image 1"/></a></li>
+                   <li><a href="{% url 'reader_url' %}"><img src="{% static "images/readers.jpg" %}"  style="  border-radius: 10%" alt="image 2"/></a></li>
+               </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>

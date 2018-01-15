@@ -15,72 +15,69 @@
                     </form>
                 </div>
             </div>
-            <button type="button" class="btn ui-button-icon-primary" data-toggle="modal" data-target="#myModal">Open Modal</button>
+            <button type="button" class="btn ui-button-icon-primary" data-toggle="modal" data-target="#myModal">Модалка</button>
         </div>
     </div>
 
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-      <div class="modal-dialog" style="width: 400px">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h2 class="modal-title" style="font-size: 30px">Добавление новой книги</h2>
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+          <div class="modal-dialog" style="width: 400px">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h2 class="modal-title" style="font-size: 30px">Добавление новой книги</h2>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" enctype="multipart/form-data">
+                                <div class="add-form container">
+                                    {% csrf_token %}
+                                    <div class="course_add">
+                                        <label for="id_name_book">Название книги:</label>
+                                        <div class="data-and-error">
+                                            <input type="text" name="name_book" maxlength="100" required
+                                                   id="id_name_book"/>
+                                        </div>
+                                    </div>
+                                    <div class="course_add">
+                                        <label for="id_genre_book">Жанр:</label>
+                                        <div class="data-and-error">
+                                            <input type="text" name="genre_book" maxlength="100" required
+                                                   id="id_genre_book"/>
+                                        </div>
+                                    </div>
+                                    <div class="course_add">
+                                        <label for="id_photo">Фото:</label>
+                                        <div class="data-and-error">
+                                            <input type="file" name="photo" id="id_photo"/>
+                                        </div>
+                                    </div>
+                                    <div class="course_add">
+                                        <label for="id_writer_book">Автор:</label>
+                                        <div class="data-and-error">
+                                            <input type="text" name="writer_book" maxlength="100" required
+                                                   id="id_genre_book"/>
+                                        </div>
+                                    </div>
+                                    <div class="course_add">
+                                        <label for="id_year_book">Год написания:</label>
+                                        <div class="data-and-error">
+                                            <input type="text" name="year_book" maxlength="100" required
+                                                   id="id_year_book"/>
+                                        </div>
+                                    </div>
+                                    <br><button type="submit" id="btn_add" style="margin-left: 5%">Добавить книгу</button>
+                                    <br>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form method="POST" enctype="multipart/form-data">
-                            <div class="add-form container">
-                                {% csrf_token %}
-                                <div class="course_add">
-                                    <label for="id_name_book">Название книги:</label>
-                                    <div class="data-and-error">
-                                        <input type="text" name="name_book" maxlength="100" required
-                                               id="id_name_book"/>
-                                    </div>
-                                </div>
-                                <div class="course_add">
-                                    <label for="id_genre_book">Жанр:</label>
-                                    <div class="data-and-error">
-                                        <input type="text" name="genre_book" maxlength="100" required
-                                               id="id_genre_book"/>
-                                    </div>
-                                </div>
-                                <div class="course_add">
-                                    <label for="id_photo">Фото:</label>
-                                    <div class="data-and-error">
-                                        <input type="file" name="photo" id="id_photo"/>
-                                    </div>
-                                </div>
-                                <div class="course_add">
-                                    <label for="id_writer_book">Автор:</label>
-                                    <div class="data-and-error">
-                                        <input type="text" name="writer_book" maxlength="100" required
-                                               id="id_genre_book"/>
-                                    </div>
-                                </div>
-                                <div class="course_add">
-                                    <label for="id_year_book">Год написания:</label>
-                                    <div class="data-and-error">
-                                        <input type="text" name="year_book" maxlength="100" required
-                                               id="id_year_book"/>
-                                    </div>
-                                </div>
-                                <br><button type="submit" id="btn_add" style="margin-left: 5%">Добавить книгу</button>
-                                <br>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                    </div>
-                </div>
+          </div>
       </div>
-  </div>
-</div>
-
-
+    </div>
 {% endblock %}

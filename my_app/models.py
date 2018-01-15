@@ -18,10 +18,18 @@ class Book(models.Model):
         def get_users(self):
             return [{'name': user.username} for user in self.users.all()]
 
+        class Meta:
+            verbose_name_plural = "Книги"
+            verbose_name = "Название книги"
+
 
 class Issuance(models.Model):
-    book_name = models.ForeignKey(Book, on_delete=models.CASCADE)
+    book_name = models.ForeignKey(Book, on_delete=models.CASCADE, verbose_name='Название книги')
     username = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def str(self):
         return 'username:%s,  book_name:%s' % (str(self.username.username), str(self.book_name.name_book))
+
+    class Meta:
+        verbose_name_plural = "Выдачи"
+        verbose_name = "Название книги"

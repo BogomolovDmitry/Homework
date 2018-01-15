@@ -10,23 +10,23 @@
                                 <td><img src="{{book.photo.url}}" width="300" height="300"></td>
                             {% endif %}
                     <table class="table table-hover table-inverse">
-                <tr href="{% url 'list_books_url'%}">
-                    <td>Название</td>
-                    <td>Жанр</td>
-                    <td>Автор</td>
-                    <td>Читатели</td>
-                </tr>
-                <tr>
-                    <td>{{book.name_book}}</td>
-                    <td>{{book.genre_book}}</td>
-                    <td>{{book.writer_book}}</td>
-                    <td>
-                        {% for user in book.get_users %}
-                          <h4>{{ user.name }}</h4>
-                        {% endfor %}
-                    </td>
-                </tr>
-                </table>
+                        <tr href="{% url 'list_books_url'%}">
+                            <td>Название</td>
+                            <td>Жанр</td>
+                            <td>Автор</td>
+                            <td>Читатели</td>
+                        </tr>
+                        <tr>
+                            <td>{{book.name_book}}</td>
+                            <td>{{book.genre_book}}</td>
+                            <td>{{book.writer_book}}</td>
+                            <td>
+                                {% for user in book.get_users %}
+                                  <h4>{{ user.name }}</h4>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
         </div>
