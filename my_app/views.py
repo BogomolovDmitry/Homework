@@ -126,4 +126,4 @@ def registration2(request):
 class ListBookView(ListView):
     model = Book
     template_name = 'list_books.html'
-    paginate_by = 2
+

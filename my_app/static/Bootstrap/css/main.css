@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Lato|Kurale|Yanone+Kaffeesatz|Play');
-
+.body {
+    background-size: 100% 100%;
+    height: 100vh;
+    overflow: scroll;
+}
 body {
     background: url(../../../static/images/foto.jpg) no-repeat;
     background-size: 100% 100%;

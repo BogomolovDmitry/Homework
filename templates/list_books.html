@@ -1,10 +1,14 @@
 {% extends 'base.html' %}
 {% block body1 %}
 <div id="header1">
-        <div class="container">
+    <div class="container">
+
+{#            <img :src.tpl="http://lorempixel.com/400/200/animals/{{n}}" />#}
             <div class="row centered">
                 <div class="col-lg-8 col-lg-offset-2">
-                    <h1 style="font-size: 60px"><br>Книги<br></h1>
+                    <h1 style="font-size: 60px">Книги</h1>
+                <div al-app  al-init="count=5" @scroll.debounce-50="($element.scrollTop > $element.scrollHeight - $element.clientHeight - 150)?count++:0" class="body">
+                <div al-repeat="n in count">
                 {% for Book in object_list %}
                     <div class="infinite-container">
                     <div class="infinite-item">
@@ -45,6 +49,11 @@
 {#                    </span>#}
 {#                </div>#}
 {#            {% endif %}#}
+
+
+
+  </div>
+</div>
         </div>
 </div>
 {% endblock %}

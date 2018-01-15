@@ -25,11 +25,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
-      <div class="modal-dialog">
+      <div class="modal-dialog" style="width: 400px">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                        <h2 class="modal-title">Добавление новой книги</h2>
+                        <h2 class="modal-title" style="font-size: 30px">Добавление новой книги</h2>
                     </div>
                     <div class="modal-body">
                         <form method="POST" enctype="multipart/form-data">
@@ -40,7 +40,6 @@
                                     <div class="data-and-error">
                                         <input type="text" name="name_book" maxlength="100" required
                                                id="id_name_book"/>
-                                        <h5 id="error_name_book">Заполните это поле</h5>
                                     </div>
                                 </div>
                                 <div class="course_add">
@@ -48,7 +47,6 @@
                                     <div class="data-and-error">
                                         <input type="text" name="genre_book" maxlength="100" required
                                                id="id_genre_book"/>
-                                        <h5 id="error_genre_book">Выберите жанр</h5>
                                     </div>
                                 </div>
                                 <div class="course_add">
@@ -62,7 +60,6 @@
                                     <div class="data-and-error">
                                         <input type="text" name="writer_book" maxlength="100" required
                                                id="id_genre_book"/>
-                                        <h5 id="error_writer_book">Выберите автора</h5>
                                     </div>
                                 </div>
                                 <div class="course_add">
@@ -70,10 +67,9 @@
                                     <div class="data-and-error">
                                         <input type="text" name="year_book" maxlength="100" required
                                                id="id_year_book"/>
-                                        <h5 id="error_year_book">Выберите год написания</h5>
                                     </div>
                                 </div>
-                                <button type="submit" id="btn_add">Добавить книгу</button>
+                                <br><button type="submit" id="btn_add" style="margin-left: 5%">Добавить книгу</button>
                                 <br>
                             </div>
                         </form>
